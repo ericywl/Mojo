@@ -1,0 +1,3 @@
+NET "button" LOC = P41;
+NET "button" IOSTANDARD = LVTTL;
+NET "button" PULLUP;

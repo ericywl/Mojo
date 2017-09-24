@@ -1,0 +1,35 @@
+module adc_to_leds (
+    input clk,  // clock
+    input rst,  // reset
+    output channel[4],
+    input sample[10],
+    input sample_channel[4],
+    input new_sample,
+    output leds[8]
+  ) {
+  
+  const LED_TO_CHANNEL = {4d9, 4d8, 4d7, 4d6, 4d5, 4d4, 4d3, 4d2, 4d1, 4d0};
+  const CHANNEL_TO_LED = {4bx, 4bx, 4bx, 4bx, 4bx, 4bx, 4d7, 4d6, 4d5, 4d4, 4d3, 4d2, 4bx, 4bx, 4d1, 4d0};
+
+  .clk(clk), .rst(rst) {
+    pwm pwm[8](#WIDTH(10));
+    dff ch[4];
+    }
+  
+  always {
+    channel = LED_TO_CHANNEL[ch.q];
+    
+    pwm.value = 8x{{sample}};
+    pwm.update = 8b0;
+    
+    if (new_sample) {
+      pwm.update[CHANNEL_TO_LED[sample_channel]] = 1;
+      ch.d = ch.q + 1;
+      if (ch.q == 7) {
+        ch.d = 0;
+        }
+      }
+    
+    leds = pwm.pulse;
+  }
+}
