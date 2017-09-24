@@ -18,10 +18,6 @@ module mojo_top_0 (
     output reg avr_rx,
     input avr_rx_busy,
     output reg [23:0] io_led,
-    output reg [7:0] io_seg,
-    output reg [3:0] io_sel,
-    input [4:0] io_button,
-    input [23:0] io_dip,
     input sum,
     input carry,
     output reg pina,
@@ -43,7 +39,7 @@ module mojo_top_0 (
   localparam SUCCESS_state = 4'd9;
   
   reg [3:0] M_state_d, M_state_q = STATE1_state;
-  reg [2:0] M_counter_d, M_counter_q = 1'h0;
+  reg [27:0] M_counter_d, M_counter_q = 1'h0;
   
   always @* begin
     M_state_d = M_state_q;
@@ -53,19 +49,17 @@ module mojo_top_0 (
     spi_miso = 1'bz;
     spi_channel = 4'bzzzz;
     avr_rx = 1'bz;
-    pina = 1'h1;
-    pinb = 1'h1;
-    pinc = 1'h1;
+    pina = 1'h0;
+    pinb = 1'h0;
+    pinc = 1'h0;
     io_led = 24'h000000;
-    io_seg = 8'hff;
-    io_sel = 4'hf;
     
     case (M_state_q)
       STATE1_state: begin
-        M_counter_d = 3'h0;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        M_counter_d = 1'h0;
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h0 && sum == 1'h0) begin
           M_state_d = STATE2_state;
           io_led[0+0+0-:1] = 1'h1;
@@ -75,9 +69,9 @@ module mojo_top_0 (
       end
       STATE2_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h0 && sum == 1'h1) begin
           M_state_d = STATE3_state;
           io_led[0+1+0-:1] = 1'h1;
@@ -87,9 +81,9 @@ module mojo_top_0 (
       end
       STATE3_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h0 && sum == 1'h1) begin
           M_state_d = STATE4_state;
           io_led[0+2+0-:1] = 1'h1;
@@ -99,9 +93,9 @@ module mojo_top_0 (
       end
       STATE4_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h1 && sum == 1'h0) begin
           M_state_d = STATE5_state;
           io_led[0+3+0-:1] = 1'h1;
@@ -111,9 +105,9 @@ module mojo_top_0 (
       end
       STATE5_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h0 && sum == 1'h1) begin
           M_state_d = STATE6_state;
           io_led[0+4+0-:1] = 1'h1;
@@ -123,9 +117,9 @@ module mojo_top_0 (
       end
       STATE6_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h1 && sum == 1'h0) begin
           M_state_d = STATE7_state;
           io_led[0+5+0-:1] = 1'h1;
@@ -135,9 +129,9 @@ module mojo_top_0 (
       end
       STATE7_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h1 && sum == 1'h0) begin
           M_state_d = STATE8_state;
           io_led[0+6+0-:1] = 1'h1;
@@ -147,9 +141,9 @@ module mojo_top_0 (
       end
       STATE8_state: begin
         M_counter_d = M_counter_q + 1'h1;
-        pina = M_counter_q[2+0-:1];
-        pinb = M_counter_q[1+0-:1];
-        pinc = M_counter_q[0+0-:1];
+        pina = M_counter_q[27+0-:1];
+        pinb = M_counter_q[26+0-:1];
+        pinc = M_counter_q[25+0-:1];
         if (carry == 1'h1 && sum == 1'h1) begin
           M_state_d = SUCCESS_state;
           io_led[0+7+0-:1] = 1'h1;
@@ -158,20 +152,20 @@ module mojo_top_0 (
         end
       end
       SUCCESS_state: begin
-        io_led[16+0+0-:1] = 1'h1;
+        io_led[8+0+0-:1] = 1'h1;
       end
       ERROR_state: begin
-        io_led[8+0+0-:1] = 1'h1;
+        io_led[0+0+0-:1] = 1'h1;
       end
     endcase
   end
   
   always @(posedge clk) begin
+    M_counter_q <= M_counter_d;
+    
     if (rst_n == 1'b1) begin
-      M_counter_q <= 1'h0;
       M_state_q <= 1'h0;
     end else begin
-      M_counter_q <= M_counter_d;
       M_state_q <= M_state_d;
     end
   end

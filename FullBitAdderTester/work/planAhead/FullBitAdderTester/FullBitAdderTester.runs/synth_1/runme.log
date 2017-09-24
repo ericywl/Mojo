@@ -22,8 +22,6 @@ Elaborating module <mojo_top_0>.
 
 Synthesizing Unit <mojo_top_0>.
     Related source file is "E:/GitHub/Mojo/FullBitAdderTester/work/planAhead/FullBitAdderTester/FullBitAdderTester.srcs/sources_1/imports/verilog/mojo_top_0.v".
-WARNING:Xst:647 - Input <io_button> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <io_dip> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <cclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_ss> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -31,7 +29,7 @@ WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 4-bit register for signal <M_state_q>.
-    Found 3-bit register for signal <M_counter_q>.
+    Found 28-bit register for signal <M_counter_q>.
     Found finite state machine <FSM_0> for signal <M_state_q>.
     -----------------------------------------------------------------------
     | States             | 10                                             |
@@ -46,17 +44,17 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 3-bit adder for signal <M_counter_q[2]_GND_1_o_add_34_OUT> created at line 149.
-    Found 24-bit 12-to-1 multiplexer for signal <io_led> created at line 63.
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 48
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 48
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 48
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 48
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 48
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 48
+    Found 28-bit adder for signal <M_counter_q[27]_GND_1_o_add_34_OUT> created at line 143.
+    Found 24-bit 12-to-1 multiplexer for signal <io_led> created at line 57.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 44
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 44
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 44
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 44
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 44
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 44
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred   3 D-type flip-flop(s).
+	inferred  28 D-type flip-flop(s).
 	inferred   7 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
@@ -67,13 +65,13 @@ HDL Synthesis Report
 
 Macro Statistics
 # Adders/Subtractors                                   : 1
- 3-bit adder                                           : 1
+ 28-bit adder                                          : 1
 # Registers                                            : 1
- 3-bit register                                        : 1
+ 28-bit register                                       : 1
 # Multiplexers                                         : 7
  1-bit 2-to-1 multiplexer                              : 3
  24-bit 12-to-1 multiplexer                            : 1
- 3-bit 2-to-1 multiplexer                              : 3
+ 28-bit 2-to-1 multiplexer                             : 3
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
 # FSMs                                                 : 1
@@ -90,13 +88,13 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # Adders/Subtractors                                   : 1
- 3-bit adder                                           : 1
-# Registers                                            : 3
- Flip-Flops                                            : 3
+ 28-bit adder                                          : 1
+# Registers                                            : 28
+ Flip-Flops                                            : 28
 # Multiplexers                                         : 7
  1-bit 2-to-1 multiplexer                              : 3
  24-bit 12-to-1 multiplexer                            : 1
- 3-bit 2-to-1 multiplexer                              : 3
+ 28-bit 2-to-1 multiplexer                             : 3
 # FSMs                                                 : 1
 
 =========================================================================
@@ -125,7 +123,7 @@ Optimizing unit <mojo_top_0> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 0.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 1.
 
 Final Macro Processing ...
 
@@ -133,8 +131,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 7
- Flip-Flops                                            : 7
+# Registers                                            : 32
+ Flip-Flops                                            : 32
 
 =========================================================================
 
@@ -158,7 +156,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 7     |
+clk                                | BUFGP                  | 32    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -169,9 +167,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 3.055ns (Maximum Frequency: 327.332MHz)
+   Minimum period: 3.715ns (Maximum Frequency: 269.167MHz)
    Minimum input arrival time before clock: 3.180ns
-   Maximum output required time after clock: 6.036ns
+   Maximum output required time after clock: 6.498ns
    Maximum combinational path delay: 6.699ns
 
 =========================================================================
