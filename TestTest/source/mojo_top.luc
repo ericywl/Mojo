@@ -55,8 +55,8 @@ module mojo_top (
     pin_b = count.q[26];
     pin_c = count.q[27];
     
-    if ((count.q[24] ^ count.q[23] ^ count.q[22] == sum) && 
-        ((count.q[24] & count.q[23]) | (count.q[22] & (count.q[24] ^ count.q[23]))) == carry) {
+    if ((count.q[25] ^ count.q[26] ^ count.q[27] == sum) && 
+        ((count.q[25] & count.q[26]) | (count.q[27] & (count.q[25] ^ count.q[26]))) == carry) {
       io_led[0][0] = 1;
       } else {
         io_led[1][0] = 1;
