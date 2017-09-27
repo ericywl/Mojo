@@ -1,5 +1,5 @@
 set projDir "E:/GitHub/Mojo/FullBitAdder_Test/work/planAhead"
-set projName "TestTest"
+set projName "FullBitAdder_Test"
 set topName top
 set device xc6slx9-2tqg144
 if {[file exists "$projDir/$projName"]} { file delete -force "$projDir/$projName" }
