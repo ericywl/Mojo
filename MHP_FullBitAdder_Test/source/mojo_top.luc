@@ -23,7 +23,9 @@ module mojo_top (
     input sum
   ) {
   
-  sig rst;                  // reset signal  
+  sig rst;                  // reset signal
+  
+  adder adder;
   
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
@@ -57,32 +59,38 @@ module mojo_top (
     pin_a = 0;
     pin_b = 0;
     pin_c = 0;
-
     
+    adder.a = io_dip[0][7];
+    adder.b = io_dip[0][6];
+    adder.c = io_dip[0][5];
     
     case (state.q) {
       state.START:
         timer.d = 26x{0};
-        if (io_button[1]) {
+        io_led[2][7] = 1;
+        if (io_button[0]) {
           state.d = state.STATE000;
           }
-        if (io_button[2]){
+        if (io_button[2]) {
           state.d = state.MANUALTEST;
           }
           
       state.MANUALTEST:
-        x = io_dip[0][6];
-        y = io_dip[0][7];
+        x = io_dip[0][7];
+        y = io_dip[0][6];
         cin = io_dip[0][5];
-        pin_a= cin;
-        pin_b= x;
-        pin_c= y;
-        io_led[0][1] = !x*(!y*cin+y*!cin) + x*(!y*!cin+y*cin);  
-        io_led[0][2] = cin*(!x*y+!y*x) + x*y;
-        if (io_button[2]){
+        pin_a = x;
+        pin_b = y;
+        pin_c = cin;
+        io_led[0][2] = x;
+        io_led[0][1] = y;
+        io_led[0][0] = cin;
+        io_led[1][1:0] = adder.out; 
+        //io_led[1][0] = !x*(!y*cin+y*!cin) + x*(!y*!cin+y*cin);  
+        //io_led[1][1] = cin*(!x*y+!y*x) + x*y;
+        if (io_button[1]) {
           state.d = state.START;
           }
-        
         
       state.STATE000:
         timer.d = timer.q + 1;

@@ -33,9 +33,20 @@ module mojo_top_0 (
   
   reg rst;
   
+  wire [2-1:0] M_adder_out;
+  reg [1-1:0] M_adder_a;
+  reg [1-1:0] M_adder_b;
+  reg [1-1:0] M_adder_c;
+  adder_1 adder (
+    .a(M_adder_a),
+    .b(M_adder_b),
+    .c(M_adder_c),
+    .out(M_adder_out)
+  );
+  
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_1 reset_cond (
+  reset_conditioner_2 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
@@ -49,10 +60,17 @@ module mojo_top_0 (
   localparam STATE101_state = 4'd6;
   localparam STATE110_state = 4'd7;
   localparam STATE111_state = 4'd8;
-  localparam SUCCESS_state = 4'd9;
+  localparam MANUALTEST_state = 4'd9;
+  localparam SUCCESS_state = 4'd10;
   
   reg [3:0] M_state_d, M_state_q = START_state;
   reg [25:0] M_timer_d, M_timer_q = 1'h0;
+  
+  reg x;
+  
+  reg y;
+  
+  reg cin;
   
   always @* begin
     M_state_d = M_state_q;
@@ -70,12 +88,34 @@ module mojo_top_0 (
     pin_a = 1'h0;
     pin_b = 1'h0;
     pin_c = 1'h0;
+    M_adder_a = io_dip[0+7+0-:1];
+    M_adder_b = io_dip[0+6+0-:1];
+    M_adder_c = io_dip[0+5+0-:1];
     
     case (M_state_q)
       START_state: begin
         M_timer_d = 26'h0000000;
-        if (io_button[1+0-:1]) begin
+        io_led[16+7+0-:1] = 1'h1;
+        if (io_button[0+0-:1]) begin
           M_state_d = STATE000_state;
+        end
+        if (io_button[2+0-:1]) begin
+          M_state_d = MANUALTEST_state;
+        end
+      end
+      MANUALTEST_state: begin
+        x = io_dip[0+7+0-:1];
+        y = io_dip[0+6+0-:1];
+        cin = io_dip[0+5+0-:1];
+        pin_a = x;
+        pin_b = y;
+        pin_c = cin;
+        io_led[0+2+0-:1] = x;
+        io_led[0+1+0-:1] = y;
+        io_led[0+0+0-:1] = cin;
+        io_led[8+0+1-:2] = M_adder_out;
+        if (io_button[1+0-:1]) begin
+          M_state_d = START_state;
         end
       end
       STATE000_state: begin
@@ -171,6 +211,9 @@ module mojo_top_0 (
         pin_b = 1'h0;
         pin_c = 1'h0;
         io_led[16+0+0-:1] = 1'h1;
+        if (io_button[1+0-:1]) begin
+          M_state_d = START_state;
+        end
       end
     endcase
   end

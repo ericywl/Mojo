@@ -1,0 +1,11 @@
+module adder (
+    input a[1], // 1-bit input
+    input b[1],
+    input c[1],
+    output out[2]
+  ) {
+
+  always {
+    out = a + b + c;
+  }
+}
