@@ -1,11 +1,15 @@
 module adder (
-    input a[1], // 1-bit input
+	// three 1-bit inputs
+    input a[1], 
     input b[1],
     input c[1],
+
+    // 2-bit output
     output out[2]
   ) {
 
   always {
+    // add all inputs together
     out = a + b + c;
   }
 }

@@ -15,10 +15,14 @@ module mojo_top (
     output io_seg [8],      // 7-segment LEDs on IO Shield
     output io_sel [4],      // Digit select on IO Shield
     input io_button [5],    // 5 buttons on IO Shield
-    input io_dip [3][8],     // DIP switches on IO Shield
+    input io_dip [3][8],    // DIP switches on IO Shield
+
+    // outputs A, B and C to the input of the full-bit adder
     output pin_a,
     output pin_b,
     output pin_c,
+
+    // inputs from the carry and sum output of the full-bit adder
     input carry,
     input sum
   ) {
@@ -39,6 +43,7 @@ module mojo_top (
     }
   }
   
+    // declaring signal variable
     sig x;
     sig y;
     sig cin;
@@ -56,14 +61,17 @@ module mojo_top (
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
     
+    // initialize inputs A, B and C
     pin_a = 0;
     pin_b = 0;
     pin_c = 0;
     
+    // set input of adder module to dip switches
     adder.a = io_dip[0][7];
     adder.b = io_dip[0][6];
     adder.c = io_dip[0][5];
     
+    // FSM
     case (state.q) {
       state.START:
         timer.d = 26x{0};
@@ -75,6 +83,8 @@ module mojo_top (
           state.d = state.MANUALTEST;
           }
           
+      // manual testing state by using dip switches as input
+      // the dip switches used are the same as the inputs of adder module
       state.MANUALTEST:
         x = io_dip[0][7];
         y = io_dip[0][6];
@@ -82,16 +92,24 @@ module mojo_top (
         pin_a = x;
         pin_b = y;
         pin_c = cin;
+
+        // show inputs on the first IO LED segment
         io_led[0][2] = x;
         io_led[0][1] = y;
         io_led[0][0] = cin;
+
+        // set second IO LED segment to display the output of adder module
+        // if this output is the same as the stripboard LEDs, then the full-bit adder is correct
         io_led[1][1:0] = adder.out; 
-        //io_led[1][0] = !x*(!y*cin+y*!cin) + x*(!y*!cin+y*cin);  
-        //io_led[1][1] = cin*(!x*y+!y*x) + x*y;
         if (io_button[1]) {
           state.d = state.START;
           }
         
+
+      // STATE000 to STATE111 are the automatic testing stages
+      // the FPGA go through each state and test the input against the output of the full-bit adder at constant time
+      // if the full-bit adder is correct, the FPGA will proceed to the next state
+      // if it is wrong, the FPGA will remain at the incorrect state
       state.STATE000:
         timer.d = timer.q + 1;
         io_led[1][0] = 1;
@@ -179,7 +197,9 @@ module mojo_top (
         if (carry == 1 && sum == 1 && timer.q == 26x{1}) {
           state.d = state.SUCCESS;
           }
-                           
+      
+      // if all automatic testing stages are succesful, 
+      // the first LED in the last IO LED segment will light up               
       state.SUCCESS:
         pin_a = 0;
         pin_b = 0;
