@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-MIDNIGHT2903::  Mon Oct 16 20:11:47 2017
+MIDNIGHT2903::  Mon Oct 16 20:42:37 2017
 
 par -intstyle pa -w -mt on mojo_top_0.ncd mojo_top_0_routed.ncd 
 
@@ -27,21 +27,21 @@ Device Utilization Summary:
 
 Slice Logic Utilization:
   Number of Slice Registers:                     0 out of  11,440    0%
-  Number of Slice LUTs:                         63 out of   5,720    1%
-    Number used as logic:                       63 out of   5,720    1%
-      Number using O6 output only:              55
+  Number of Slice LUTs:                         72 out of   5,720    1%
+    Number used as logic:                       72 out of   5,720    1%
+      Number using O6 output only:              64
       Number using O5 output only:               0
       Number using O5 and O6:                    8
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    27 out of   1,430    1%
+  Number of occupied Slices:                    30 out of   1,430    2%
   Number of MUXCYs used:                         8 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:           63
-    Number with an unused Flip Flop:            63 out of      63  100%
-    Number with an unused LUT:                   0 out of      63    0%
-    Number of fully used LUT-FF pairs:           0 out of      63    0%
+  Number of LUT Flip Flop pairs used:           72
+    Number with an unused Flip Flop:            72 out of      72  100%
+    Number with an unused LUT:                   0 out of      72    0%
+    Number of fully used LUT-FF pairs:           0 out of      72    0%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -69,7 +69,7 @@ Specific Feature Utilization:
   Number of BUFHs:                               0 out of     128    0%
   Number of BUFPLLs:                             0 out of       8    0%
   Number of BUFPLL_MCBs:                         0 out of       4    0%
-  Number of DSP48A1s:                            0 out of      16    0%
+  Number of DSP48A1s:                            1 out of      16    6%
   Number of ICAPs:                               0 out of       1    0%
   Number of MCBs:                                0 out of       2    0%
   Number of PCILOGICSEs:                         0 out of       2    0%
@@ -105,13 +105,13 @@ WARNING:Par:288 - The signal io_dip(23)_IBUF has no load.  PAR will not attempt 
 Starting Router
 
 
-Phase  1  : 381 unrouted;      REAL time: 2 secs 
+Phase  1  : 559 unrouted;      REAL time: 2 secs 
 
-Phase  2  : 372 unrouted;      REAL time: 2 secs 
+Phase  2  : 439 unrouted;      REAL time: 2 secs 
 
-Phase  3  : 172 unrouted;      REAL time: 3 secs 
+Phase  3  : 203 unrouted;      REAL time: 3 secs 
 
-Phase  4  : 172 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
+Phase  4  : 203 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
 
 Updating file: mojo_top_0_routed.ncd with current fully routed design.
 
@@ -126,7 +126,7 @@ Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 3
 Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
 
 Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
-Total REAL time to Router completion: 4 secs 
+Total REAL time to Router completion: 3 secs 
 Total CPU time to Router completion: 3 secs 
 
 Partition Implementation Status
@@ -151,7 +151,7 @@ WARNING:Par:283 - There are 15 loadless signals in this design. This design will
 Total REAL time to PAR completion: 4 secs 
 Total CPU time to PAR completion: 4 secs 
 
-Peak Memory Usage:  272 MB
+Peak Memory Usage:  281 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.

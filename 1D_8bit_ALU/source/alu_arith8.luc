@@ -8,6 +8,7 @@ module alu_arith8 (
         output n
     ) {
 
+    // temporary variables for computation
     sig temp_arith[8];
     sig xb[8];
 
@@ -15,8 +16,16 @@ module alu_arith8 (
         temp_arith = 0;
         xb = b ^ 8x{alufn[0]};
 
+        // if ALUFN[0] is 0, do ADD
+        // else do SUB
         temp_arith = a + xb + alufn[0];
 
+        if (alufn[1:0] == b10) {
+            // MUL
+            temp_arith = a * b;
+        }
+
+        // followed lab3 documentation for Z, V and N
         z = (temp_arith == 8x{0});
         v = ((a[7] & xb[7] & !temp_arith[7]) || (!a[7] & !xb[7] & temp_arith[7]));
         n = temp_arith[7];

@@ -24,6 +24,9 @@ module alu_arith8_3 (
     temp_arith = 1'h0;
     xb = b ^ {4'h8{alufn[0+0-:1]}};
     temp_arith = a + xb + alufn[0+0-:1];
+    if (alufn[0+1-:2] == 2'h2) begin
+      temp_arith = a * b;
+    end
     z = (temp_arith == 8'h00);
     v = ((a[7+0-:1] & xb[7+0-:1] & !temp_arith[7+0-:1]) || (!a[7+0-:1] & !xb[7+0-:1] & temp_arith[7+0-:1]));
     n = temp_arith[7+0-:1];

@@ -8,6 +8,7 @@ module alu8 (
         output n
     ) {
 
+    // initialize all the alu components
     .alufn(alufn) {
         .a(a), .b(b) {
             alu_arith8 arith;
@@ -21,6 +22,7 @@ module alu8 (
     always {
         alu = 0;
 
+        // the most significant 2-bits are used to select operation
         case (alufn[5:4]) {
             b00:
                 alu = arith.arith;
@@ -32,6 +34,7 @@ module alu8 (
                 alu = cmp.cmp;
         }
 
+        // connecting the Z, V and N output to ARITH's
         z = arith.z;
         v = arith.v;
         n = arith.n;
