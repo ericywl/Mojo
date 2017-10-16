@@ -16,7 +16,7 @@ module shift8 (
 				shift = a >> b;	
 
 			b11:
-				shift = a >>> b;
+				shift = $signed(a) >>> b;
 		}
 	}
 }
