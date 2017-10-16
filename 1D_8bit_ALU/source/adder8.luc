@@ -7,7 +7,7 @@ module adder8 (
 
     always {
         s = 0;
-        
+
         case (alufn[1:0]) {
             00:
                 s = a + b;

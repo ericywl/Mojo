@@ -39,10 +39,6 @@ module mojo_top (
         adder.a = io_dip[0];
         adder.b = io_dip[1];
         adder.alufn = alufn;
-
-        zvn.a = io_dip[0];
-        zvn.b = io_dip[1];
-        zvn.s = adder.s;
         
         bool.a = io_dip[0];
         bool.b = io_dip[1];
@@ -52,9 +48,8 @@ module mojo_top (
         shift.b = io_dip[1][2:0];
         shift.alufn = alufn;        
         
-        cmp.z = zvn.z;
-        cmp.v = zvn.v;
-        cmp.n = zvn.n;
+        cmp.a = io_dip[0];
+        cmp.b = io_dip[1];
         cmp.alufn = alufn;
         
         out = 0;
@@ -75,9 +70,9 @@ module mojo_top (
             00:
                 out = adder.s;
             01:
-                out = bool.s;
+                out = bool.bool;
             10:
-                out = shift.z;
+                out = shift.shift;
             11:
                 out = cmp.cmp;
              }

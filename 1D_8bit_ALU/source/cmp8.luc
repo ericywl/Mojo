@@ -1,7 +1,6 @@
 module cmp8 (
-        input z,
-        input v,
-        input n,
+        input a[8],
+        input b[8],
         input alufn[6],
         output cmp[8]
     ) {
@@ -10,14 +9,14 @@ module cmp8 (
         cmp = 0;
 
         case (alufn[2:1]) {
-            01:
-                cmp[0] = z;
+            b01:
+                cmp[0] = (a == b);
 
-            10:
-                cmp[0] = n ^ v;
+            b10:
+                cmp[0] = (a < b);
 
-            11:
-                cmp[0] = z | (n ^ v);
+            b11:
+                cmp[0] = (a <= b);
         }
     }
 }

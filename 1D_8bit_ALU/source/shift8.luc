@@ -2,21 +2,21 @@ module shift8 (
 		input a[8],
 		input b[3],
 		input alufn[6],
-		output z[8]
+		output shift[8]
 	) {
 	
 	always {
-		z = a;
+		shift = a;
 
 		case (alufn[1:0]) {
-			00:
-				z = a << b;
+			b00:
+				shift = a << b;
 
-			01:
-				z = a >> b;	
+			b01:
+				shift = a >> b;	
 
-			11:
-				z = a >>> b;
+			b11:
+				shift = a >>> b;
 		}
 	}
 }
