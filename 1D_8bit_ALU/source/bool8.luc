@@ -9,11 +9,14 @@ module adder8 (
     s = 0;
     case (alufn[1:0]){
       00:
-        s = a && b;
+        s = a & b;
+        
       01:
-        s = a || b;
+        s = a | b;
+        
       10:
-        s = a ^^ b;
+        s = a ^ b;
+        
       11:
         s = a;
        }
