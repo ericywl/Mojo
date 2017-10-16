@@ -1,0 +1,22 @@
+module alu_shift8 (
+        input a[8],
+        input b[8],
+        input alufn[6],
+        output shift[8]
+    ) {
+    
+    always {
+        shift = a;
+
+        case (alufn[1:0]) {
+            b00:
+                shift = a << b[2:0];
+
+            b01:
+                shift = a >> b[2:0];
+
+            b11:
+                shift = $signed(a) >>> b[2:0];
+        }
+    }
+}

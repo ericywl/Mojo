@@ -28,77 +28,35 @@ module mojo_top_0 (
   
   reg rst;
   
-  reg [5:0] opcode;
-  
-  reg [7:0] out;
-  
-  wire [8-1:0] M_adder_s;
-  reg [8-1:0] M_adder_a;
-  reg [8-1:0] M_adder_b;
-  reg [6-1:0] M_adder_alufn;
-  adder8_1 adder (
-    .a(M_adder_a),
-    .b(M_adder_b),
-    .alufn(M_adder_alufn),
-    .s(M_adder_s)
-  );
-  
-  wire [8-1:0] M_bool_s;
-  reg [8-1:0] M_bool_a;
-  reg [8-1:0] M_bool_b;
-  reg [6-1:0] M_bool_alufn;
-  bool8_2 bool (
-    .a(M_bool_a),
-    .b(M_bool_b),
-    .alufn(M_bool_alufn),
-    .s(M_bool_s)
-  );
-  
-  wire [8-1:0] M_shift_z;
-  reg [8-1:0] M_shift_a;
-  reg [3-1:0] M_shift_b;
-  reg [6-1:0] M_shift_alufn;
-  shift8_3 shift (
-    .a(M_shift_a),
-    .b(M_shift_b),
-    .alufn(M_shift_alufn),
-    .z(M_shift_z)
-  );
-  
-  wire [8-1:0] M_cmp_cmp;
-  reg [8-1:0] M_cmp_a;
-  reg [8-1:0] M_cmp_b;
-  reg [6-1:0] M_cmp_alufn;
-  cmp8_4 cmp (
-    .a(M_cmp_a),
-    .b(M_cmp_b),
-    .alufn(M_cmp_alufn),
-    .cmp(M_cmp_cmp)
+  wire [8-1:0] M_alu8_alu;
+  wire [1-1:0] M_alu8_z;
+  wire [1-1:0] M_alu8_v;
+  wire [1-1:0] M_alu8_n;
+  reg [8-1:0] M_alu8_a;
+  reg [8-1:0] M_alu8_b;
+  reg [6-1:0] M_alu8_alufn;
+  alu8_1 alu8 (
+    .a(M_alu8_a),
+    .b(M_alu8_b),
+    .alufn(M_alu8_alufn),
+    .alu(M_alu8_alu),
+    .z(M_alu8_z),
+    .v(M_alu8_v),
+    .n(M_alu8_n)
   );
   
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_5 reset_cond (
+  reset_conditioner_2 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
   
   always @* begin
-    opcode = io_dip[16+0+5-:6];
-    M_adder_a = io_dip[0+7-:8];
-    M_adder_b = io_dip[8+7-:8];
-    M_adder_alufn = io_dip[16+0+5-:6];
-    M_bool_a = io_dip[0+7-:8];
-    M_bool_b = io_dip[8+7-:8];
-    M_bool_alufn = io_dip[16+0+5-:6];
-    M_shift_a = io_dip[0+7-:8];
-    M_shift_b = io_dip[8+0+2-:3];
-    M_shift_alufn = io_dip[16+0+5-:6];
-    M_cmp_a = io_dip[0+7-:8];
-    M_cmp_b = io_dip[8+7-:8];
-    M_cmp_alufn = io_dip[16+0+5-:6];
-    out = 1'h0;
+    M_alu8_alufn = io_dip[16+0+5-:6];
+    M_alu8_a = io_dip[0+7-:8];
+    M_alu8_b = io_dip[8+7-:8];
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
     led = 8'h00;
@@ -108,21 +66,7 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    
-    case (opcode[4+1-:2])
-      1'h0: begin
-        out = M_adder_s;
-      end
-      1'h1: begin
-        out = M_bool_s;
-      end
-      4'ha: begin
-        out = M_shift_z;
-      end
-      4'hb: begin
-        out = M_cmp_cmp;
-      end
-    endcase
-    io_led[0+7-:8] = out;
+    io_led[0+7-:8] = M_alu8_alu;
+    led[0+2-:3] = {M_alu8_z, M_alu8_v, M_alu8_n};
   end
 endmodule

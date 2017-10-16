@@ -4,29 +4,30 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module shift8_3 (
+module alu_bool8_5 (
     input [7:0] a,
-    input [2:0] b,
+    input [7:0] b,
     input [5:0] alufn,
-    output reg [7:0] z
+    output reg [7:0] bool
   );
   
   
   
   always @* begin
+    bool = 1'h0;
     
-    case (alufn[0+1-:2])
-      1'h0: begin
-        z = a <<< b;
+    case (alufn[0+3-:4])
+      4'h8: begin
+        bool = a & b;
       end
-      1'h1: begin
-        z = a >>> b;
+      4'he: begin
+        bool = a | b;
       end
-      4'hb: begin
-        z = $signed(a) >>> b;
+      4'h6: begin
+        bool = a ^ b;
       end
-      default: begin
-        z = a;
+      4'ha: begin
+        bool = a;
       end
     endcase
   end

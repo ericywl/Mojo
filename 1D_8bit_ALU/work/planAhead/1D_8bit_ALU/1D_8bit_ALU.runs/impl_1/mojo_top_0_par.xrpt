@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<document OS="nt64" product="ISE" version="14.7">
+<document OS="nt" product="ISE" version="14.7">
 
   <!--The data in this file is primarily intended for consumption by Xilinx tools.
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Mon Oct 16 14:05:33 2017">
+  <application stringID="par" timeStamp="Mon Oct 16 20:11:48 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:/Xilinx/14.7/ISE_DS/EDK/bin/nt64;C:/Xilinx/14.7/ISE_DS/EDK/lib/nt64;C:/Xilinx/14.7/ISE_DS/ISE/bin/nt64;C:/Xilinx/14.7/ISE_DS/ISE/lib/nt64;C:/Xilinx/14.7/ISE_DS/common/bin/nt64;C:/Xilinx/14.7/ISE_DS/common/lib/nt64;C:/Xilinx/14.7/ISE_DS/PlanAhead/bin;C:/Xilinx/14.7/ISE_DS/PlanAhead/lib/win64.o;C:/Xilinx/14.7/ISE_DS/PlanAhead/tps/win64/jre/bin/server;C:/Xilinx/14.7/ISE_DS/PlanAhead/tps/win64/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\MinGW\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2013b\bin;C:\Program Files (x86)\Calibre2\;C:\ProgramData\Anaconda2;C:\ProgramData\Anaconda2\Scripts;C:\ProgramData\Anaconda2\Library\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Mojo IDE\java\bin"/>
+          <item stringID="value" value="E:\Software\Xilinx\14.7\ISE_DS\ISE\\lib\nt;E:\Software\Xilinx\14.7\ISE_DS\ISE\\bin\nt;E:/Software/Xilinx/14.7/ISE_DS/EDK/bin/nt;E:/Software/Xilinx/14.7/ISE_DS/EDK/lib/nt;E:/Software/Xilinx/14.7/ISE_DS/ISE/bin/nt;E:/Software/Xilinx/14.7/ISE_DS/ISE/lib/nt;E:/Software/Xilinx/14.7/ISE_DS/common/bin/nt;E:/Software/Xilinx/14.7/ISE_DS/common/lib/nt;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/bin;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/lib/win32.o;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/tps/win32/jre/bin/server;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/tps/win32/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Users\Eric\Anaconda2;C:\Python27;C:\Perl64\site\bin;C:\Perl64\bin;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;E:\MATLAB\bin;E:\TestFolder\PythonScripts;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\Eric\AppData\Local\GitHub\PortableGit_f02737a78695063deace08e96d5042710d3e32db\cmd;C:\Users\Eric\Anaconda2\Scripts;C:\Users\Eric\Anaconda2\Library\bin;C:\Users\Eric\AppData\Local\Microsoft\WindowsApps;C:\texlive\2016\bin\win32;C:\Program Files\Java\jdk1.8.0_144\bin;C:\Program Files\Sublime Text 3;E:\Software\Mojo IDE\java\bin"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -20,36 +20,36 @@
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\"/>
+          <item stringID="value" value="E:\Software\Xilinx\14.7\ISE_DS\ISE\"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX_COMMON_TOOLS"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/common"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/common"/>
         </row>
         <row stringID="row" value="4">
           <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/ISE"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/ISE"/>
         </row>
         <row stringID="row" value="5">
           <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/EDK"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/EDK"/>
         </row>
         <row stringID="row" value="6">
           <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/PlanAhead"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/PlanAhead"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Microsoft , 64-bit"/>
         <item stringID="User_EnvOsrelease" value="major release  (build 9200)"/>
       </item>
-      <item stringID="User_EnvHost" value="DELL"/>
+      <item stringID="User_EnvHost" value="midnight2903"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz"/>
-          <item stringID="speed" value="1596 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz"/>
+          <item stringID="speed" value="3408 MHz"/>
         </row>
       </table>
     </section>
@@ -62,12 +62,12 @@
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="21 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="21 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="4 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="3 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="22 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="22 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="4 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="4 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
@@ -763,7 +763,7 @@
           </row>
           <row stringID="row" value="74">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P74"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="io_dip(19)"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="io_dip[19]"/>
             <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L74N_DOUT_BUSY_1"/>
             <item stringID="Direction" value="INPUT"/>
@@ -777,7 +777,7 @@
           </row>
           <row stringID="row" value="75">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P75"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="io_dip(18)"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="io_dip[18]"/>
             <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L74P_AWAKE_1"/>
             <item stringID="Direction" value="INPUT"/>
@@ -1571,19 +1571,19 @@
       <section stringID="PAR_UNROUTES_REPORT">
         <item dataType="int" stringID="PAR_UNROUTED_NETS" value="0"/>
         <item dataType="int" stringID="PAR_TOTAL_SOURCELESS_NETS" value="0"/>
-        <item dataType="int" stringID="PAR_TOTAL_LOADLESS_NETS" value="17"/>
+        <item dataType="int" stringID="PAR_TOTAL_LOADLESS_NETS" value="15"/>
       </section>
     </task>
   </application>
 
-  <application stringID="Par" timeStamp="Mon Oct 16 14:05:35 2017">
+  <application stringID="Par" timeStamp="Mon Oct 16 20:11:49 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:/Xilinx/14.7/ISE_DS/EDK/bin/nt64;C:/Xilinx/14.7/ISE_DS/EDK/lib/nt64;C:/Xilinx/14.7/ISE_DS/ISE/bin/nt64;C:/Xilinx/14.7/ISE_DS/ISE/lib/nt64;C:/Xilinx/14.7/ISE_DS/common/bin/nt64;C:/Xilinx/14.7/ISE_DS/common/lib/nt64;C:/Xilinx/14.7/ISE_DS/PlanAhead/bin;C:/Xilinx/14.7/ISE_DS/PlanAhead/lib/win64.o;C:/Xilinx/14.7/ISE_DS/PlanAhead/tps/win64/jre/bin/server;C:/Xilinx/14.7/ISE_DS/PlanAhead/tps/win64/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\MinGW\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2013b\bin;C:\Program Files (x86)\Calibre2\;C:\ProgramData\Anaconda2;C:\ProgramData\Anaconda2\Scripts;C:\ProgramData\Anaconda2\Library\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Mojo IDE\java\bin"/>
+          <item stringID="value" value="E:\Software\Xilinx\14.7\ISE_DS\ISE\\lib\nt;E:\Software\Xilinx\14.7\ISE_DS\ISE\\bin\nt;E:/Software/Xilinx/14.7/ISE_DS/EDK/bin/nt;E:/Software/Xilinx/14.7/ISE_DS/EDK/lib/nt;E:/Software/Xilinx/14.7/ISE_DS/ISE/bin/nt;E:/Software/Xilinx/14.7/ISE_DS/ISE/lib/nt;E:/Software/Xilinx/14.7/ISE_DS/common/bin/nt;E:/Software/Xilinx/14.7/ISE_DS/common/lib/nt;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/bin;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/lib/win32.o;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/tps/win32/jre/bin/server;E:/Software/Xilinx/14.7/ISE_DS/PlanAhead/tps/win32/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Users\Eric\Anaconda2;C:\Python27;C:\Perl64\site\bin;C:\Perl64\bin;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;E:\MATLAB\bin;E:\TestFolder\PythonScripts;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\Eric\AppData\Local\GitHub\PortableGit_f02737a78695063deace08e96d5042710d3e32db\cmd;C:\Users\Eric\Anaconda2\Scripts;C:\Users\Eric\Anaconda2\Library\bin;C:\Users\Eric\AppData\Local\Microsoft\WindowsApps;C:\texlive\2016\bin\win32;C:\Program Files\Java\jdk1.8.0_144\bin;C:\Program Files\Sublime Text 3;E:\Software\Mojo IDE\java\bin"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -1591,36 +1591,36 @@
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\"/>
+          <item stringID="value" value="E:\Software\Xilinx\14.7\ISE_DS\ISE\"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX_COMMON_TOOLS"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/common"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/common"/>
         </row>
         <row stringID="row" value="4">
           <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/ISE"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/ISE"/>
         </row>
         <row stringID="row" value="5">
           <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/EDK"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/EDK"/>
         </row>
         <row stringID="row" value="6">
           <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="C:/Xilinx/14.7/ISE_DS/PlanAhead"/>
+          <item stringID="value" value="E:/Software/Xilinx/14.7/ISE_DS/PlanAhead"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Microsoft , 64-bit"/>
         <item stringID="User_EnvOsrelease" value="major release  (build 9200)"/>
       </item>
-      <item stringID="User_EnvHost" value="DELL"/>
+      <item stringID="User_EnvHost" value="midnight2903"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz"/>
-          <item stringID="speed" value="1596 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz"/>
+          <item stringID="speed" value="3408 MHz"/>
         </row>
       </table>
     </section>
@@ -1632,10 +1632,10 @@
           <item dataType="int" stringID="PAR_NUM_SLICE_LATCHTHRU" value="0"/>
           <item dataType="int" stringID="PAR_NUM_SLICE_LATCHLOGIC" value="0"/>
         </item>
-        <item AVAILABLE="5720" dataType="int" label="Number of Slice LUTS" stringID="PAR_SLICE_LUTS" value="28">
+        <item AVAILABLE="5720" dataType="int" label="Number of Slice LUTS" stringID="PAR_SLICE_LUTS" value="63">
           <item dataType="int" stringID="PAR_NUM_LOGIC_O5ONLY" value="0"/>
-          <item dataType="int" stringID="PAR_NUM_LOGIC_O6ONLY" value="24"/>
-          <item dataType="int" stringID="PAR_NUM_LOGIC_O5ANDO6" value="4"/>
+          <item dataType="int" stringID="PAR_NUM_LOGIC_O6ONLY" value="55"/>
+          <item dataType="int" stringID="PAR_NUM_LOGIC_O5ANDO6" value="8"/>
           <item dataType="int" stringID="PAR_NUM_ROM_O5ONLY" value="0"/>
           <item dataType="int" stringID="PAR_NUM_ROM_O6ONLY" value="0"/>
           <item dataType="int" stringID="PAR_NUM_ROM_O5ANDO6" value="0"/>
@@ -1655,13 +1655,13 @@
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_CARRY4" value="0"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
         </item>
-        <item AVAILABLE="1430" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="8">
-          <item AVAILABLE="355" dataType="int" stringID="PAR_NUM_SLICEL" value="4"/>
+        <item AVAILABLE="1430" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="27">
+          <item AVAILABLE="355" dataType="int" stringID="PAR_NUM_SLICEL" value="3"/>
           <item AVAILABLE="360" dataType="int" stringID="PAR_NUM_SLICEM" value="0"/>
-          <item AVAILABLE="715" dataType="int" stringID="PAR_NUM_SLICEX" value="4"/>
+          <item AVAILABLE="715" dataType="int" stringID="PAR_NUM_SLICEX" value="24"/>
         </item>
-        <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="28">
-          <item dataType="int" stringID="PAR_OCCUPIED_LUT_ONLY" value="28"/>
+        <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="63">
+          <item dataType="int" stringID="PAR_OCCUPIED_LUT_ONLY" value="63"/>
           <item dataType="int" stringID="PAR_OCCUPIED_FF_ONLY" value="0"/>
           <item dataType="int" stringID="PAR_OCCUPIED_FF_AND_LUT" value="0"/>
         </item>

@@ -1,11 +1,11 @@
-Release 14.7 - par P.20131013 (nt64)
+Release 14.7 - par P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon Oct 16 14:05:47 2017
+Mon Oct 16 20:11:51 2017
 
 All signals are completely routed.
 
-WARNING:ParHelpers:361 - There are 17 loadless signals in this design. This design will cause Bitgen to issue DRC
+WARNING:ParHelpers:361 - There are 15 loadless signals in this design. This design will cause Bitgen to issue DRC
    warnings.
 
    avr_rx_busy_IBUF
@@ -17,8 +17,6 @@ WARNING:ParHelpers:361 - There are 17 loadless signals in this design. This desi
    io_button(2)_IBUF
    io_button(3)_IBUF
    io_button(4)_IBUF
-   io_dip(18)_IBUF
-   io_dip(19)_IBUF
    io_dip(22)_IBUF
    io_dip(23)_IBUF
    rst_n_IBUF

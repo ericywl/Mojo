@@ -4,30 +4,27 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module bool8_2 (
+module alu_shift8_4 (
     input [7:0] a,
     input [7:0] b,
     input [5:0] alufn,
-    output reg [7:0] s
+    output reg [7:0] shift
   );
   
   
   
   always @* begin
-    s = 1'h0;
+    shift = a;
     
     case (alufn[0+1-:2])
-      1'h0: begin
-        s = a & b;
+      2'h0: begin
+        shift = a << b[0+2-:3];
       end
-      1'h1: begin
-        s = a | b;
+      2'h1: begin
+        shift = a >> b[0+2-:3];
       end
-      4'ha: begin
-        s = a ^ b;
-      end
-      4'hb: begin
-        s = a;
+      2'h3: begin
+        shift = $signed(a) >>> b[0+2-:3];
       end
     endcase
   end

@@ -4,9 +4,10 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module cmp8_4 (
-    input [7:0] a,
-    input [7:0] b,
+module alu_cmp8_6 (
+    input z,
+    input v,
+    input n,
     input [5:0] alufn,
     output reg [7:0] cmp
   );
@@ -14,17 +15,17 @@ module cmp8_4 (
   
   
   always @* begin
-    cmp[1+6-:7] = 1'h0;
+    cmp = 1'h0;
     
     case (alufn[1+1-:2])
-      1'h1: begin
-        cmp[0+0-:1] = (a == b);
+      2'h1: begin
+        cmp[0+0-:1] = z;
       end
-      4'ha: begin
-        cmp[0+0-:1] = (a < b);
+      2'h2: begin
+        cmp[0+0-:1] = n ^ v;
       end
-      4'hb: begin
-        cmp[0+0-:1] = (a <= b);
+      2'h3: begin
+        cmp[0+0-:1] = z | (n ^ v);
       end
     endcase
   end

@@ -19,13 +19,8 @@ module mojo_top (
         ) {
     
     sig rst;                        // reset signal
-    sig alufn[6];
-    sig out[8];
     
-    adder8 adder;
-    bool8 bool;
-    shift8 shift;
-    cmp8 cmp;
+    alu8 alu8;
     
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
@@ -34,25 +29,9 @@ module mojo_top (
     }
     
     always {
-        alufn = io_dip[2][5:0];
-        
-        adder.a = io_dip[0];
-        adder.b = io_dip[1];
-        adder.alufn = alufn;
-        
-        bool.a = io_dip[0];
-        bool.b = io_dip[1];
-        bool.alufn = alufn;
-        
-        shift.a = io_dip[0];
-        shift.b = io_dip[1][2:0];
-        shift.alufn = alufn;        
-        
-        cmp.a = io_dip[0];
-        cmp.b = io_dip[1];
-        cmp.alufn = alufn;
-        
-        out = 0;
+        alu8.alufn = io_dip[2][5:0];
+        alu8.a = io_dip[0];
+        alu8.b = io_dip[1];
      
         reset_cond.in = ~rst_n;     // input raw inverted reset signal
         rst = reset_cond.out;       // conditioned reset
@@ -65,18 +44,8 @@ module mojo_top (
         io_led = 3x{{8h00}};        // turn LEDs off
         io_seg = 8hff;              // turn segments off
         io_sel = 4hf;               // select no digits
-
-        case (alufn[5:4]) {
-            b00:
-                out = adder.s;
-            b01:
-                out = bool.bool;
-            b10:
-                out = shift.shift;
-            b11:
-                out = cmp.cmp;
-            }
             
-        io_led[0] = out;    
+        io_led[0] = alu8.alu;
+        led[2:0] = c{alu8.z, alu8.v, alu8.n};  
     }
 }
