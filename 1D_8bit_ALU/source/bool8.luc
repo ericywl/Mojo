@@ -1,4 +1,4 @@
-module adder8 (
+module bool8 (
     input a[8],
     input b[8],
     input alufn[6],
