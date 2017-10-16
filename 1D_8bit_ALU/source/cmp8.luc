@@ -7,6 +7,8 @@ module cmp8 (
     ) {
 
     always {
+        cmp = 0;
+
         case (alufn[2:1]) {
             01:
                 cmp[0] = z;
@@ -16,9 +18,6 @@ module cmp8 (
 
             11:
                 cmp[0] = z | (n ^ v);
-
-            default:
-                cmp = 0;
         }
     }
 }
