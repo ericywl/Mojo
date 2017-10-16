@@ -7,17 +7,17 @@ module bool8 (
   
   always {
     s = 0;
-    case (alufn[1:0]){
-      00:
+    case (alufn[3:0]){
+      1000:
         s = a & b;
         
-      01:
+      1110:
         s = a | b;
         
-      10:
+      0110:
         s = a ^ b;
         
-      11:
+      1010:
         s = a;
        }
     }
