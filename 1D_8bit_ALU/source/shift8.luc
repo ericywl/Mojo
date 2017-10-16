@@ -8,13 +8,13 @@ module shift8 (
 	always {
 		case (alufn[1:0]) {
 			00:
-				z = a << b;
+				z = a <<< b;
 
 			01:
-				z = a >> b;	
+				z = a >>> b;	
 
 			11:
-				z = a >>> b;
+				z = $signed(a) >>> b;
         
       default:
 				z = a;
