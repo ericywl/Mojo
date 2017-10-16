@@ -1,0 +1,23 @@
+module shift8 (
+		input a[8],
+		input b[3],
+		input alufn[6],
+		output z[8]
+	) {
+	
+	always {
+		case (alufn[1:0]) {
+			00:
+				z = a << b[2:0];
+
+			01:
+				z = a >> b[2:0];
+
+			10:
+				z = a;	
+
+			11:
+				z = $signed(a) >> b[2:0];	
+		}
+	}
+}

@@ -1,0 +1,22 @@
+module cmp8 (
+        input a[8],
+        input b[8],
+        input alufn[6],
+        output boole[8]
+    ) {
+
+    always {
+        boole[7:1] = 0;
+
+        case (alufn[2:1]) {
+            01:
+                boole[0] = (a == b);
+
+            10:
+                boole[0] = (a < b);
+
+            11:
+                boole[0] = (a <= b);    
+        }
+    }
+}

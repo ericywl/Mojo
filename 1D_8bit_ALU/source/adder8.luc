@@ -1,17 +1,18 @@
 module adder8 (
-    input a[8],
-    input b[8],
-    input alufn[6],
-    output s[8]
-  ) {
+        input a[8],
+        input b[8],
+        input alufn[6],
+        output s[8]
+    ) {
 
-  always {
-    s = 0;
-    case (alufn[1:0]) {
-      00:
-        s = a + b;
-      01:
-        s = a - b;
-      }
-  }
+    always {
+        s = 0;
+        case (alufn[1:0]) {
+            00:
+                s = a + b;
+
+            01:
+                s = a - b;
+        }
+    }
 }
