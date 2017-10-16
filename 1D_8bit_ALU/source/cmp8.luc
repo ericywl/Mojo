@@ -1,22 +1,24 @@
 module cmp8 (
-        input a[8],
-        input b[8],
+        input z,
+        input v,
+        input n,
         input alufn[6],
         output cmp[8]
     ) {
 
     always {
-        cmp[7:1] = 0;
-
         case (alufn[2:1]) {
             01:
-                cmp[0] = (a == b);
+                cmp[0] = z;
 
             10:
-                cmp[0] = (a < b);
+                cmp[0] = n ^ v;
 
             11:
-                cmp[0] = (a <= b);    
+                cmp[0] = z | (n ^ v);
+
+            default:
+                cmp = 0;
         }
     }
 }
