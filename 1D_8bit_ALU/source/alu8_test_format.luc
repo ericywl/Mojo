@@ -1,3 +1,5 @@
+// IDK IF THIS WORKS, DONT FOLLOW BLINDLY
+
 module alu8_test_format (
         input clk,
         input rst,
