@@ -11,19 +11,19 @@ module alu_bool8 (
         // using bitwise operators on each bit of A and B
         case (alufn[3:0]) {
             b1000:
-            	// AND
+                // AND
                 bool = a & b;
                 
             b1110:
-            	// OR
+                // OR
                 bool = a | b;
                 
             b0110:
-            	// XOR
+                // XOR
                 bool = a ^ b;
                 
             b1010:
-            	// "A"
+                // "A"
                 bool = a;
              }
         }
