@@ -2,17 +2,17 @@
 <DARoots Version="1" Minor="26">
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PSRCDIR/constrs_1/imports/components/io_shield.ucf">
+    <File Path="$PSRCDIR/constrs_1/imports/mojo.ucf">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../Software/Mojo IDE/library/components/io_shield.ucf"/>
-        <Attr Name="ImportTime" Val="1477283388"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../constraint/mojo.ucf"/>
+        <Attr Name="ImportTime" Val="1508315787"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/constrs_1/imports/components/mojo.ucf">
+    <File Path="$PSRCDIR/constrs_1/imports/Mojo IDE/library/components/io_shield.ucf">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../Software/Mojo IDE/library/components/mojo.ucf"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../../Program Files/Mojo IDE/library/components/io_shield.ucf"/>
         <Attr Name="ImportTime" Val="1477283388"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>

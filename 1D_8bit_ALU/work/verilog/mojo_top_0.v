@@ -45,20 +45,43 @@ module mojo_top_0 (
     .n(M_alu8_n)
   );
   
+  wire [6-1:0] M_test8_alufn;
+  wire [16-1:0] M_test8_alu8_in;
+  wire [1-1:0] M_test8_result;
+  wire [2-1:0] M_test8_states;
+  reg [1-1:0] M_test8_clk;
+  reg [1-1:0] M_test8_rst;
+  reg [8-1:0] M_test8_alu8_out;
+  reg [1-1:0] M_test8_trigger;
+  alu8_test_format_2 test8 (
+    .clk(M_test8_clk),
+    .rst(M_test8_rst),
+    .alu8_out(M_test8_alu8_out),
+    .trigger(M_test8_trigger),
+    .alufn(M_test8_alufn),
+    .alu8_in(M_test8_alu8_in),
+    .result(M_test8_result),
+    .states(M_test8_states)
+  );
+  
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_2 reset_cond (
+  reset_conditioner_3 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
   
   always @* begin
-    M_alu8_alufn = io_dip[16+0+5-:6];
-    M_alu8_a = io_dip[0+7-:8];
-    M_alu8_b = io_dip[8+7-:8];
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
+    M_test8_clk = clk;
+    M_test8_rst = rst;
+    M_test8_trigger = 1'h0;
+    M_test8_alu8_out = M_alu8_alu;
+    M_alu8_alufn = 6'h00;
+    M_alu8_a = 8'h00;
+    M_alu8_b = 8'h00;
     led = 8'h00;
     spi_miso = 1'bz;
     spi_channel = 4'bzzzz;
@@ -66,7 +89,24 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    io_led[0+7-:8] = M_alu8_alu;
-    led[0+2-:3] = {M_alu8_z, M_alu8_v, M_alu8_n};
+    
+    case (io_dip[16+7+0-:1])
+      1'h1: begin
+        M_test8_trigger = 1'h1;
+        M_alu8_alufn = M_test8_alufn;
+        M_alu8_a = M_test8_alu8_in[8+7-:8];
+        M_alu8_b = M_test8_alu8_in[0+7-:8];
+        io_led[0+7-:8] = M_alu8_alu;
+        M_test8_alu8_out = M_alu8_alu;
+        led[0+1-:2] = M_test8_states;
+        led[7+0-:1] = M_test8_result;
+      end
+      1'h0: begin
+        io_led[0+7-:8] = M_alu8_alu;
+        M_alu8_alufn = io_dip[16+0+5-:6];
+        M_alu8_a = io_dip[0+7-:8];
+        M_alu8_b = io_dip[8+7-:8];
+      end
+    endcase
   end
 endmodule

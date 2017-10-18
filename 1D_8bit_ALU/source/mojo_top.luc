@@ -21,7 +21,8 @@ module mojo_top (
     sig rst;                        // reset signal
     
     alu8 alu8;
-    
+    alu8_test_format test8;
+  
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
@@ -29,13 +30,20 @@ module mojo_top (
     }
     
     always {
-        alu8.alufn = io_dip[2][5:0];
-        alu8.a = io_dip[0];
-        alu8.b = io_dip[1];
-     
+  
         reset_cond.in = ~rst_n;     // input raw inverted reset signal
-        rst = reset_cond.out;       // conditioned reset
+        rst = reset_cond.out;       // conditioned reset_cond
         
+        test8.clk = clk;
+        test8.rst = rst;
+        test8.trigger = b0;
+        test8.alu8_out=alu8.alu;
+    
+        alu8.alufn = 6b0;
+        alu8.a = 8b0;
+        alu8.b = 8b0;
+            
+    
         led = 8h00;                 // turn LEDs off
         spi_miso = bz;              // not using SPI
         spi_channel = bzzzz;        // not using flags
@@ -45,7 +53,27 @@ module mojo_top (
         io_seg = 8hff;              // turn segments off
         io_sel = 4hf;               // select no digits
             
-        io_led[0] = alu8.alu;
-        led[2:0] = c{alu8.z, alu8.v, alu8.n};  
-    }
+  
+        
+        case(io_dip[2][7]) {
+          b1:
+            test8.trigger = b1;
+            alu8.alufn = test8.alufn;
+            alu8.a = test8.alu8_in[1];
+            alu8.b = test8.alu8_in[0]; 
+            io_led[0] = alu8.alu;
+            test8.alu8_out = alu8.alu;
+            led[1:0] = test8.states; 
+            led[7] = test8.result;
+
+              
+          b0:
+            io_led[0] = alu8.alu; 
+            alu8.alufn = io_dip[2][5:0];
+            alu8.a = io_dip[0];
+            alu8.b = io_dip[1];
+            
+             
+        }
+  }    
 }

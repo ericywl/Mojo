@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module alu_arith8_3 (
+module alu_arith8_4 (
     input [7:0] a,
     input [7:0] b,
     input [5:0] alufn,

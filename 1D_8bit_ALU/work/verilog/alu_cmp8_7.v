@@ -4,27 +4,28 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module alu_shift8_4 (
-    input [7:0] a,
-    input [7:0] b,
+module alu_cmp8_7 (
+    input z,
+    input v,
+    input n,
     input [5:0] alufn,
-    output reg [7:0] shift
+    output reg [7:0] cmp
   );
   
   
   
   always @* begin
-    shift = a;
+    cmp = 1'h0;
     
-    case (alufn[0+1-:2])
-      2'h0: begin
-        shift = a << b[0+2-:3];
-      end
+    case (alufn[1+1-:2])
       2'h1: begin
-        shift = a >> b[0+2-:3];
+        cmp[0+0-:1] = z;
+      end
+      2'h2: begin
+        cmp[0+0-:1] = n ^ v;
       end
       2'h3: begin
-        shift = $signed(a) >>> b[0+2-:3];
+        cmp[0+0-:1] = z | (n ^ v);
       end
     endcase
   end

@@ -7,13 +7,13 @@ module alu8_test_format (
         input trigger,
         output alufn[6],
         output alu8_in[2][8],
-        output result
+        output result,
+        output states[2]
     ) {
 
     alu8_testcases testcases;
 
     sig cases[4][3][8];
-    sig alufn_temp[6];
 
     .clk(clk), .rst(rst) {
         // counter for selecting alufn and testcases, see alu8_testcases.luc
@@ -27,13 +27,13 @@ module alu8_test_format (
         // using count to select from alu8_testcases
         count.d = 4d0;
         testcases.count = count.q;
-        alufn_temp = testcases.alufn;
+        alufn = testcases.alufn;
         cases = testcases.testcases;
-
         // initalizing outputs
         alufn = b000000;
         alu8_in = {8d0, 8d0};
-        result = b0;
+        result = b1;
+        states[1:0] = testcases.state;
 
         // test all 4 test cases provided for one particular operation
         case (state.q) {
@@ -73,18 +73,17 @@ module alu8_test_format (
 
             // if all 4 succeeds, this should increment count by 1
             state.SUCCESS:
-                if (count.q == 4d13) {
+      
+                count.d = count.q + 1;
+                if (count.q == 4d2){
                     state.d = state.DONE;
                 }
-
-                count.d = count.q + 1;
                 state.d = state.TEST1;
 
             // if every single test case succeeds, it should return 1
             state.DONE:
                 result = b1;
-                
+             
         }
     }
-
 }

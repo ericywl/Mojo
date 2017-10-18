@@ -20,7 +20,7 @@ module alu8_1 (
   wire [1-1:0] M_arith_z;
   wire [1-1:0] M_arith_v;
   wire [1-1:0] M_arith_n;
-  alu_arith8_3 arith (
+  alu_arith8_4 arith (
     .alufn(alufn),
     .a(a),
     .b(b),
@@ -30,21 +30,21 @@ module alu8_1 (
     .n(M_arith_n)
   );
   wire [8-1:0] M_shift_shift;
-  alu_shift8_4 shift (
+  alu_shift8_5 shift (
     .alufn(alufn),
     .a(a),
     .b(b),
     .shift(M_shift_shift)
   );
   wire [8-1:0] M_bool_bool;
-  alu_bool8_5 bool (
+  alu_bool8_6 bool (
     .alufn(alufn),
     .a(a),
     .b(b),
     .bool(M_bool_bool)
   );
   wire [8-1:0] M_cmp_cmp;
-  alu_cmp8_6 cmp (
+  alu_cmp8_7 cmp (
     .alufn(alufn),
     .z(M_arith_z),
     .v(M_arith_v),
