@@ -13,7 +13,7 @@ module alu8_testcases (
                 alufn = b000000;
                 cases = {
                     {8d0, 8d0, 8d0},
-                    {8d0, 8d0, 8d0},
+                    {8d1, 8d1, 8d2},
                     {8d0, 8d0, 8d0},
                     {8d0, 8d0, 8d0}
                 };
