@@ -1,15 +1,24 @@
 module alu8_testcases (
-        input count[3],
+        input clk,
+        input rst,
+        input alu8_out[8],
         output alufn[6],
-        output testcases[4][3][8]
+        output alu8_in[2][8],
+        output result
     ) {
+
+    .clk(clk), .rst(rst) {
+        counter timer (#SIZE(2), #DIV(25));
+        counter alufn_select (#SIZE(4), #DIV(27));
+    }
 
     sig cases[4][3][8];
 
     // test cases are not yet generated
     always {
-        case(count) {
+        case(alufn_select.value) {
             4d0:
+                // ADD
                 alufn = b000000;
                 cases = {
                     {8d0, 8d0, 8d0},
@@ -19,7 +28,8 @@ module alu8_testcases (
                 };
 
             4d1:
-                alufn = b000000;
+                // SUB
+                alufn = b000001;
                 cases = {
                     {8d0, 8d0, 8d0},
                     {8d0, 8d0, 8d0},
@@ -28,7 +38,8 @@ module alu8_testcases (
                 };
 
             4d2:
-                alufn = b000000;
+                // MUL
+                alufn = b000010;
                 cases = {
                     {8d0, 8d0, 8d0},
                     {8d0, 8d0, 8d0},
@@ -65,7 +76,8 @@ module alu8_testcases (
 
         }
 
-        testcases = cases;
+        alu8_in = cases[timer.value][2:1];
+        result = (alu8_out == cases[timer.value][0]);
     }
     
 }
