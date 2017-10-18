@@ -9,9 +9,43 @@ module alu8_testcases (
 
     // test cases are not yet generated
     always {
+<<<<<<< HEAD
   
         alufn = b000000;
         cases = {
+=======
+        case(count) {
+            4d0:
+                alufn = b000000;
+                cases = {
+                    {8d0, 8d0, 8d0},
+                    {8d1, 8d1, 8d2},
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0}
+                };
+
+            4d1:
+                alufn = b000000;
+                cases = {
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0}
+                };
+
+            4d2:
+                alufn = b000000;
+                cases = {
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0},
+                    {8d0, 8d0, 8d0}
+                };
+
+            4d3:
+                alufn = b000000;
+                cases = {
+>>>>>>> 091854add28c1c39d5c4e51c3d8f6bea9111c642
                     {8d0, 8d0, 8d0},
                     {8d0, 8d0, 8d0},
                     {8d0, 8d0, 8d0},
