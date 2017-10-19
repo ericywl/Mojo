@@ -1,0 +1,29 @@
+module alu_cmp8 (
+        input z,
+        input v,
+        input n,
+        input alufn[6],
+        output cmp[8]
+    ) {
+
+    always {
+        cmp = 0;
+
+        case (alufn[2:1]) {
+            b01:
+            	// CMPEQ
+                // if A == B
+                cmp[0] = z;
+
+            b10:
+            	// CMPLT
+                // if A < B
+                cmp[0] = n ^ v;
+
+            b11:
+            	// CMPLE
+                // if A <= B
+                cmp[0] = z | (n ^ v);
+        }
+    }
+}

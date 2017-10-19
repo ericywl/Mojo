@@ -1,0 +1,26 @@
+module alu_shift8 (
+        input a[8],
+        input b[8],
+        input alufn[6],
+        output shift[8]
+    ) {
+    
+    always {
+        shift = a;
+
+        // using shift operators to shift A by B bits
+        case (alufn[1:0]) {
+            b00:
+                // SHL
+                shift = a << b[2:0];
+
+            b01:
+                // SHR
+                shift = a >> b[2:0];
+
+            b11:
+                // SRA
+                shift = $signed(a) >>> b[2:0];
+        }
+    }
+}

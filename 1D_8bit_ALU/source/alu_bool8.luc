@@ -1,0 +1,39 @@
+module alu_bool8 (
+        input a[8],
+        input b[8],
+        input alufn[6],
+        output bool[8]
+    ) {
+    
+    always {
+        bool = 0;
+
+        // using bitwise operators on each bit of A and B
+        case (alufn[3:0]) {
+            b1000:
+                // AND
+                bool = a & b;
+                
+            b1110:
+                // OR
+                bool = a | b;
+                
+            b0110:
+                // XOR
+                bool = a ^ b;
+                
+            b1010:
+                // "A"
+                // output A regardless
+                bool = a;
+
+            b0001:
+                // NOR
+                bool = ~a & ~b;
+
+            b0111:
+                // NAND
+                bool = ~a | ~b;
+            }
+        }
+    }

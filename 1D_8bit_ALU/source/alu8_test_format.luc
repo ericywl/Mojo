@@ -1,0 +1,90 @@
+// IDK IF THIS WORKS, DONT FOLLOW BLINDLY
+
+module alu8_test_format (
+        input clk,
+        input rst,
+        input alu8_out[8],
+        input trigger,
+        output alufn[6],
+        output alu8_in[2][8],
+        output result
+    ) {
+
+    alu8_testcases testcases;
+
+    sig cases[4][3][8];
+    sig alufn_temp[6];
+
+    .clk(clk), .rst(rst) {
+        // counter for selecting alufn and testcases, see alu8_testcases.luc
+        dff count[3];
+        // not sure if this timer is necessary since we are not even doing any LED work inside the states
+        dff timer[25];
+        fsm state = {IDLE, TEST1, TEST2, TEST3, TEST4, SUCCESS, DONE};
+    }
+
+    always {
+        // using count to select from alu8_testcases
+        count.d = 4d0;
+        testcases.count = count.q;
+        alufn_temp = testcases.alufn;
+        cases = testcases.testcases;
+
+        // initalizing outputs
+        alufn = b000000;
+        alu8_in = {8d0, 8d0};
+        result = b0;
+
+        // test all 4 test cases provided for one particular operation
+        case (state.q) {
+            state.IDLE:
+                timer.d = 25x{0};
+                if (trigger == b1) {
+                    state.d = state.TEST1;
+                }
+
+            state.TEST1:
+                timer.d = timer.q + 1;
+                alu8_in = cases[3][2:1];
+                if (alu8_out == cases[3][0] && timer.q == 25x{1}) {
+                    state.d = state.TEST2;
+                }
+
+            state.TEST2:
+                timer.d = timer.q + 1;
+                alu8_in = cases[2][2:1];
+                if (alu8_out == cases[2][0] && timer.q == 25x{1}) {
+                    state.d = state.TEST3;
+                }
+
+            state.TEST3:
+                timer.d = timer.q + 1;
+                alu8_in = cases[1][2:1];
+                if (alu8_out == cases[1][0] && timer.q == 25x{1}) {
+                    state.d = state.TEST4;
+                }
+
+            state.TEST4:
+                timer.d = timer.q + 1;
+                alu8_in = cases[0][2:1];
+                if (alu8_out == cases[0][0] && timer.q == 25x{1}) {
+                    state.d = state.SUCCESS;
+                }
+
+            // if all 4 succeeds, this should increment count by 1
+            state.SUCCESS:
+                if (count.q == 4d13) {
+                    state.d = state.DONE;
+                }
+
+                count.d = count.q + 1;
+                state.d = state.TEST1;
+
+            // if every single test case succeeds, it should return 1
+            state.DONE:
+                result = b1;
+                
+        }
+    }
+
+}

@@ -1,0 +1,42 @@
+module alu8 (
+        input a[8],
+        input b[8],
+        input alufn[6],
+        output alu[8],
+        output z,
+        output v,
+        output n
+    ) {
+
+    // initialize all the alu components
+    .alufn(alufn) {
+        .a(a), .b(b) {
+            alu_arith8 arith;
+            alu_shift8 shift;
+            alu_bool8 bool;
+        }
+
+        alu_cmp8 cmp (.z(arith.z), .v(arith.v), .n(arith.n));
+    }
+
+    always {
+        alu = 0;
+
+        // the most significant 2-bits are used to select operation
+        case (alufn[5:4]) {
+            b00:
+                alu = arith.arith;
+            b01:
+                alu = bool.bool;
+            b10:
+                alu = shift.shift;
+            b11:
+                alu = cmp.cmp;
+        }
+
+        // connecting the Z, V and N output to ARITH's
+        z = arith.z;
+        v = arith.v;
+        n = arith.n;
+    }
+}
